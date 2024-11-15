@@ -58,7 +58,7 @@ print("")
 
 
 
-
+# I just added this line below for myself. I personally operate better in celsius so I worked in tens.
    #Temperaturesincelsius=[0,       10      20      30      40      50     60     70      80      90}
 Temperature_in_Kelvin = [273.15, 283.15, 293.15, 303.15, 313.15, 323.15, 333.15, 343.15, 353.15, 3633.15]
 Temperature_in_Celsius = []
