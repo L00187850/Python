@@ -18,16 +18,14 @@ class Device():
 
     def run(self):
         raise NotImplementedError("This is an abstract class, do not instantiate")
+        
+    def calculate_crc(self, frame: str) -> int:
+        raise NotImplementedError("calculate_crc must be implemented in child classes")
 
-    def calculate_crc(self, frame:str)->int: 
-        print("Checking CRC from base")
-        # Put real code in here, this is a dummy value for initial setup
-        crc = 123456789
-        return crc
 
-my_devices = Device()
-my_devices.calculate_crc("dummy")
-my_devices.run()
+#my_devices = Device()
+#my_devices.calculate_crc("dummy")
+#my_devices.run()
 
 # Create child classes which can access the methods and properties of the base class
 class Firewall(Device):
@@ -42,17 +40,26 @@ class Firewall(Device):
         self.parameter1 = parameter1
         self.test_message = ""
 
+
+
     def configure_firewall(self):
         print("Configuring Firewall")
         
+    def calculate_crc(self, frame:str)->int: 
+        print("Checking CRC from child")
+        # Put real code in here, this is a dummy value for initial setup
+        crc = 123456789
+        return crc
+        
+    try:
+        my_devices = Device()
+        my_devices.calculate_crc("dummy")  # This will raise NotImplementedError
+    except NotImplementedError as e:
+        print(f"Error: {e}")   
+
 hostname = "firewall3"
 my_firewall = Firewall(hostname)
 my_firewall.calculate_crc("dummy")
 my_firewall.configure_firewall()
 
-    def calculate_crc(self, frame:str)->int: 
-    print("Checking CRC from child")
-    # Put real code in here, this is a dummy value for initial setup
-    crc = 123456789
-    return crc
-
+    
