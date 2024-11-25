@@ -48,7 +48,7 @@ class Firewall(Device):
     def calculate_crc(self, frame:str)->int: 
         print("Checking CRC from child")
         # Put real code in here, this is a dummy value for initial setup
-        crc = 123456789
+        crc = 24681012 % (24 * 10)
         return crc
         
     try:
